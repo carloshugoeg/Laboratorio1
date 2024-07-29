@@ -28,9 +28,32 @@ static void MenuVenta()
 {
     List<string> productosList = new List<string>();
     List<double> preciosList = new List<double>();
-    Console.Clear();
-    Console.WriteLine("----NUEVA VENTA----");
-
-    Console.WriteLine("Ingrese nuevo producto: ");
+    do
+    {
+        try
+        {
+            Console.Clear();
+            Console.WriteLine("----NUEVA VENTA----");
+            Console.Write("Ingrese nuevo producto: ");
+            string producto = Console.ReadLine();
+            if (producto.Length > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("El producto no puede ser nulo, intentelo de nuevo");
+                Console.ReadLine();
+            }
+              
+            
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.ReadLine();
+            Console.Clear();
+        }
+    }while (true);
 
 }
