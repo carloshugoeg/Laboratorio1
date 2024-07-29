@@ -24,38 +24,52 @@
 
 } while (true);
 
-static void MenuVenta()
+void MenuVenta()
 {
     List<string> productosList = new List<string>();
     List<double> preciosList = new List<double>();
     string producto;
+    string opcion;
     do
     {
-        try
+        do
         {
-            Console.Clear();
-            Console.WriteLine("----NUEVA VENTA----");
-            Console.Write("Ingrese nuevo producto: ");
-            producto = Console.ReadLine();
-            if (producto.Length > 0)
+            try
             {
-                break;
+                Console.Clear();
+                Console.WriteLine("----NUEVA VENTA----");
+                Console.Write("Ingrese nuevo producto: ");
+                producto = Console.ReadLine();
+                if (producto.Length > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("El producto no puede ser nulo, intentelo de nuevo");
+                    Console.ReadLine();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("El producto no puede ser nulo, intentelo de nuevo");
+                Console.WriteLine(ex.Message);
                 Console.ReadLine();
-            }            
-        }
-        catch(Exception ex)
+                Console.Clear();
+            }
+
+        } while (true);
+        productosList.Add(producto);
+        double precio = PedirPrecio();
+        preciosList.Add(precio);
+        Console.WriteLine("Producto Igresado CORRECTAMENTE");
+        Console.ReadLine();
+        Console.WriteLine("\nDesea ingresar otro producto? y/n");
+        opcion = Console.ReadLine();
+        if (opcion == "n" || opcion == "N")
         {
-            Console.WriteLine(ex.Message);
-            Console.ReadLine();
-            Console.Clear();
-        }
-            
-    }while (true);
-    productosList.Add(producto);
+            break;
+        } 
+    } while (true);
 
 
 }
@@ -68,7 +82,7 @@ double PedirPrecio()
             double precio;
             do
             {
-                Console.WriteLine("Ingrese el precio de su producto: ");
+                Console.Write("Ingrese el precio de su producto: ");
                 precio = double.Parse(Console.ReadLine());
                 if (precio == 0)
                 {
