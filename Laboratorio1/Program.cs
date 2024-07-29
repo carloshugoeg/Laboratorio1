@@ -67,10 +67,33 @@ void MenuVenta()
         opcion = Console.ReadLine();
         if (opcion == "n" || opcion == "N")
         {
+            Console.Clear();
+            Console.WriteLine("-----------Total-----------\n");
+            CalcularTotal(productosList, preciosList);
             break;
         } 
     } while (true);
 
+
+}
+
+void CalcularTotal(List<string> productosList,  List<double> preciosList)
+{
+    double total = preciosList.Sum();
+    Console.WriteLine($"El total de su venta es de: Q.{total}");
+    if(total  >= 100)
+    {
+        Console.WriteLine("Usted su total ha pasado los Q100! \nUsted ahora tiene un cupon de descuento de Q50.00");
+        total -= 50;
+        Console.WriteLine($"\nEl nuevo total de su venta es de: Q.{total}");
+    }
+    Console.WriteLine("\nDetalles de la compra: ");
+    int i = 1;
+    foreach (string producto in productosList)
+    {
+        Console.WriteLine($"{i}. {producto}");
+    }
+    Console.ReadLine();
 
 }
 double PedirPrecio()
