@@ -12,6 +12,9 @@
             case "1":
                 MenuVenta();
                 break;
+            case "2":
+                Environment.Exit(0);
+                break;
 
         }
     }
