@@ -122,6 +122,102 @@ namespace Tienda
             Console.ReadLine();
             return producto;
         }
+        public void Resumen()
+        {
+            Console.Clear();
+            Console.WriteLine("-----RESUMEN VENTAS-----");
+            Console.WriteLine("Nombre: " + Nombre);
+            Console.WriteLine("Inventario restante:  " + InventarioStock);
+            Console.WriteLine("Cantidad de ventas: " + Ventas);
+            Console.WriteLine("\n Presione ENTER para regresar");
+            Console.ReadLine();
+        }
+        public void ActualizarPrecio()
+        {
+            double nuevoPrecio;
+            do
+            {
+                try
+                {
+                    Console.Clear();
+
+                    Console.WriteLine("-----ACTUALIZAR PRECIO PRODUCTO-----");
+                    Console.WriteLine("\nPrecio Actual: Q." + Precio);
+
+                    Console.Write("\n\nCual es el nuevo precio?: Q.");
+                    nuevoPrecio = double.Parse(Console.ReadLine());
+                    if (nuevoPrecio != 0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("No se puede ingresar cantidad 0 o nula");
+                }
+                catch (FormatException ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Presione ENTER para continuar");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Presione ENTER para continuar");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+
+            } while (true);
+            Console.WriteLine("\nActualizacion de precio realizado excitosamente!!");
+            Precio = nuevoPrecio;
+            Console.ReadKey();
+            Console.Clear();
+        }
+        public void ReabastecerProducto()
+        {
+            int cantidadIngresar;
+            do
+            {
+                try
+                {
+                    Console.WriteLine("-----INGRESAR PRODUCTO-----");
+                    Console.WriteLine("\nCantidad en stock: " + InventarioStock);
+
+                    Console.Write("\n\nCuantas unidades desea reabastecer?: ");
+                    cantidadIngresar = int.Parse(Console.ReadLine());
+                    if (cantidadIngresar != 0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("No se puede ingresar cantidad 0 o nula");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+                catch (FormatException ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Presione ENTER para continuar");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Presione ENTER para continuar");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+
+            } while (true);
+            Console.WriteLine("\nReabastecimiento realizado excitosamente!!");
+            InventarioStock += cantidadIngresar;
+            Console.ReadKey();
+            Console.Clear();
+        }
         public double PedirPrecio()
         {
             do
